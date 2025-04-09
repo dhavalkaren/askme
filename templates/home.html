@@ -1,0 +1,12 @@
+<h2>Welcome {{ user.username }} | <a href="{% url 'logout' %}">Logout</a></h2>
+<a href="{% url 'ask_question' %}">Ask a Question</a>
+<hr>
+<div style="box-shadow: 4px 4px 4px 4px rgba(104, 102, 102, 0.404);">
+{% for question in questions %}
+    <h3><a href="{% url 'question_detail' question.pk %}">{{ question.title }}</a></h3>
+    <hr>
+    <p>{{ question.content }}</p>
+{% empty %}
+    <p>No questions yet.</p>
+{% endfor %}
+</div>
